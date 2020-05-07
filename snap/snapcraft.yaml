@@ -1,0 +1,60 @@
+name: gifex
+version: '1' 
+summary: Simple Desktop GIF recorder for Linux  
+description: |
+  Powerful yet simple Desktop GIF recorder.
+
+grade: stable  
+confinement: strict
+icon: snap/gui/icon.png
+base: core18
+
+architectures:
+  - build-on: amd64
+    run-on: amd64  
+
+apps:
+  gifex:
+    command: desktop-launch gifex
+    environment:
+       DISABLE_WAYLAND: 1
+       QT_QPA_PLATFORMTHEME: gtk3 
+    desktop: usr/share/applications/gifex.desktop
+    plugs:
+        - desktop
+        - desktop-legacy
+        - gsettings
+        - home
+        - opengl
+        - audio-playback
+        - removable-media
+        - unity7
+        - x11
+        - mount-observe
+        - wayland
+plugs:
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
+  qt513:
+    interface: content
+    target: $SNAP/qt513
+    default-provider: qt513
+
+parts:
+  snap-launcher:
+     plugin: dump
+     source: snap_launcher/
+     override-build: |
+            snapcraftctl build
+            sed -i 's|Icon=.*|Icon=${SNAP}/meta/gui/icon.png|g' ${SNAPCRAFT_PART_SRC}/gifex.desktop
+            cp -rf ${SNAPCRAFT_PART_SRC}/gifex.desktop ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/gifex.desktop

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+GenericName=Gifex
+Name=Gifex
+Type=Application
+Icon=${SNAP}/meta/gui/icon.png
+Keywords=Record;Gif;Desktop;Recorder;Gif
+Exec=gifex %F
+Categories=Utility;Qt;
+Terminal=false
+Name[en_US]=Gifex
