@@ -6,7 +6,7 @@
 ## Main Features of Gifex :
 
 * Gifex is fast and record selected area on your desktop as GIF Image.
-* Gifine has a option to trim a record before exporting which is not available in any gif applications.
+* Gifex has a option to trim a record before exporting.
 * Gifex produces Highest-quality GIF which are optimized very well for sharing purpose.
 * Gifex allows you to convert specified portion of recorded GIF providing you ability to choose preferred Frame rate and Resolution.
 * Gifex comes optional dark theme support.
